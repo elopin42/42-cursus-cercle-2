@@ -6,7 +6,7 @@
 /*   By: elopin <elopin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 16:54:09 by elopin            #+#    #+#             */
-/*   Updated: 2025/02/17 03:02:08 by elopin           ###   ########.fr       */
+/*   Updated: 2025/02/17 17:28:37 by elopin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,17 @@ int	verif_double(t_pile *p);
 
 int	verif(char **av, int ac, t_pile *p)
 {
+	p->error = 1;
 	if (!create_tab(p, ac, av))
-		return (ft_printf("error\n"), 0);
+		return (write(2, "Error\n", 6), 0);
 	if (!ft_check_valid(ac, av))
-		return (ft_printf("error\n"), free(p->pilea), free(p->pileb), 0);
+		return (write(2, "Error\n", 6), free(p->pilea), free(p->pileb), 0);
 	if (!(reel_create_tab(p, av, ac)))
-		return (ft_printf("error\n"), free(p->pilea), free(p->pileb), 0);
+		return (write(2, "Error\n", 6), free(p->pilea), free(p->pileb), 0);
+	if (p->error < 0)
+		return (write(2, "Error\n", 6), free(p->pilea), free(p->pileb), 0);
 	if (!(verif_double(p)))
-		return (ft_printf("error\n"), free(p->pilea), free(p->pileb), 0);
+		return (write(2, "Error\n", 6), free(p->pilea), free(p->pileb), 0);
 	return (1);
 }
 
@@ -86,7 +89,7 @@ int	reel_create_tab(t_pile *p, char **av, int ac)
 	str = NULL;
 	if (ac > 2)
 		while (++i < p->nbr)
-			p->pilea[i] = ft_atoi(av[i + 1]);
+			p->pilea[i] = ft_atoi(av[i + 1], p);
 	else
 	{
 		if (av[1][0] == ' ')
@@ -97,7 +100,7 @@ int	reel_create_tab(t_pile *p, char **av, int ac)
 			if (!str)
 				return (0);
 			b += ft_my_strchr(&av[1][b], ' ') + 1;
-			p->pilea[i] = ft_atoi(str);
+			p->pilea[i] = ft_atoi(str, p);
 			free(str);
 		}
 	}

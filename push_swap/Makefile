@@ -31,9 +31,10 @@ PRINTF = printf/libftprintf.a
 
 OBJS = $(SRCS:.c=.o)
 
-all: logo ${NAME}
+all: ${NAME}
 
 $(NAME): $(OBJS) $(PRINTF)
+	make logo
 	$(CC) $(CFLAGS) $(OBJS) $(PRINTF) -o $(NAME)
 
 logo:

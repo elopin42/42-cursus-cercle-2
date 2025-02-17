@@ -6,7 +6,7 @@
 /*   By: elopin <elopin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 20:06:44 by elopin            #+#    #+#             */
-/*   Updated: 2025/02/17 02:21:01 by elopin           ###   ########.fr       */
+/*   Updated: 2025/02/17 17:28:18 by elopin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,11 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-int	ft_atoi(const char *ts)
+int	ft_atoi(const char *ts, t_pile *p)
 {
-	int	k;
-	int	i;
-	int	s;
+	long	k;
+	int		i;
+	int		s;
 
 	i = 0;
 	k = 0;
@@ -71,11 +71,13 @@ int	ft_atoi(const char *ts)
 		k = (k * 10) + ts[i] - '0';
 		i++;
 	}
+	if (k * s > 2147483647 || k * s < -2147483648)
+		p->error = -1;
 	if (k * s >= 2147483647)
 		return (2147483647);
 	if (k * s <= -2147483648)
 		return (-2147483648);
-	return (k * s);
+	return ((int)k * s);
 }
 
 int	ft_my_strchr(char *s, char c)
