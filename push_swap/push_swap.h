@@ -6,7 +6,7 @@
 /*   By: elopin <elopin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 21:46:45 by elopin            #+#    #+#             */
-/*   Updated: 2025/02/17 16:53:02 by elopin           ###   ########.fr       */
+/*   Updated: 2025/02/20 00:31:16 by elopin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,6 @@ void	ft_pr(t_pile *p, int y, int c);
 void	ft_p(t_pile *p, int y, int c);
 int		check_valid(char **av);
 int		ft_check_valid(int ac, char **av);
+int		check_long(const char *ts);
 
 #endif

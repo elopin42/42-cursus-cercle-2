@@ -6,7 +6,7 @@
 /*   By: elopin <elopin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 16:54:09 by elopin            #+#    #+#             */
-/*   Updated: 2025/02/17 17:28:37 by elopin           ###   ########.fr       */
+/*   Updated: 2025/02/20 00:32:01 by elopin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int	reel_create_tab(t_pile *p, char **av, int ac)
 			p->pilea[i] = ft_atoi(av[i + 1], p);
 	else
 	{
-		if (av[1][0] == ' ')
+		if (av[1][0] == ' ' || av[1][0] == '\0')
 			return (0);
 		while (av[1][++i] && i < p->nbr)
 		{

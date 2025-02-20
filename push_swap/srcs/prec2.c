@@ -6,7 +6,7 @@
 /*   By: elopin <elopin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 23:20:46 by elopin            #+#    #+#             */
-/*   Updated: 2025/02/17 01:38:27 by elopin           ###   ########.fr       */
+/*   Updated: 2025/02/20 00:10:11 by elopin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ void	ft_p(t_pile *p, int y, int c)
 		r(p, 'a');
 	pp(p, 'b');
 	r(p, 'b');
-	while (p->pilea[p->size_a] > p->pilea[p->size_a + 1])
+	while (p->size_a + 1 < p->nbr - 1
+		&& p->pilea[p->size_a] > p->pilea[p->size_a + 1])
 	{
 		if (p->pileb[p->size_b] < p->pileb[p->size_b + 1]
 			&& p->pileb[p->size_b] > c && p->pileb[p->size_b + 1] >= c)
@@ -79,7 +80,8 @@ void	ft_pr(t_pile *p, int y, int c)
 	while (y-- > p->size_a)
 		r(p, 'a');
 	pp(p, 'b');
-	while (p->pilea[p->size_a] > p->pilea[p->size_a + 1])
+	while (p->size_a + 1 < p->nbr - 1
+		&& p->pilea[p->size_a] > p->pilea[p->size_a + 1])
 	{
 		if (p->size_b < p->nbr - 1 && p->pileb[p->size_b] < p->pileb[p->size_b
 				+ 1] && p->pileb[p->size_b] > c && p->pileb[p->size_b + 1] >= c)
